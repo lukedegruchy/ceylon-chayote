@@ -18,6 +18,11 @@ void testImmutableList() {
     
     assertEquals(myImmutableList.sequence(), ["one","two","three"]);
     assertEquals(myImmutableList, immutableList{"one","two","three"});
+
+    mutableList.remove("two");
+
+    assertEquals(myImmutableList.sequence(), ["one","two","three"]);
+    assertEquals(myImmutableList, immutableList{"one","two","three"});
 }
 
 test
@@ -30,6 +35,11 @@ void testImmutableSet() {
     
     assertEquals(myImmutableSet.sequence(), [1,2,3]);
     assertEquals(myImmutableSet, immutableSet{1,2,3});
+
+    mutableSet.remove(2);
+
+    assertEquals(myImmutableSet.sequence(), [1,2,3]);
+    assertEquals(myImmutableSet, immutableSet{1,2,3});
 }
 
 test
@@ -40,6 +50,11 @@ void testImmutableMap() {
     
     mutableMap.put("four",4);
     
+    assertEquals(myImmutableMap.sequence(), ["one"->1,"two"->2,"three"->3]);
+    assertEquals(myImmutableMap, immutableMap{"one"->1,"two"->2,"three"->3});
+
+    mutableMap.remove("four");
+
     assertEquals(myImmutableMap.sequence(), ["one"->1,"two"->2,"three"->3]);
     assertEquals(myImmutableMap, immutableMap{"one"->1,"two"->2,"three"->3});
 }
