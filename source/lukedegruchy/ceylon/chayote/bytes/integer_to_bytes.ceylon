@@ -1,5 +1,3 @@
-// TODO:  How to find size in bytes?
-
 Integer numberOfBytesInInteger = 8;
 
 shared [Byte+] integerToBytesNoZeros(Integer integer) {
