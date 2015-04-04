@@ -2,12 +2,10 @@ import ceylon.test {
     test,
     assertEquals
 }
-import lukedegruchy.ceylon.chayote.format {
+import herd.chayote.format {
     formatAndPadAsBits,
     formatAndPadAsHex
 }
-
-// TODO: Put this and all other tests in a separate source folder
 
 test
 void testFormatBits() {
@@ -31,4 +29,5 @@ void testFormatAndPadHex() {
     assertMe(#ffff, "ffff");
     assertMe(#ffff_ffff, "ffff_ffff");
     assertMe(#05a_6c1b_ffff, "005a_6c1b_ffff");
+    assertMe(500000, "0007_a120");
 }

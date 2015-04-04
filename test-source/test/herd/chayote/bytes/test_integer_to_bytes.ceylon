@@ -2,7 +2,7 @@ import ceylon.test {
     test,
     assertEquals
 }
-import lukedegruchy.ceylon.chayote.bytes {
+import herd.chayote.bytes {
     integerToBytesNoZeros
 }
 

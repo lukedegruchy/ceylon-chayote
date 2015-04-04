@@ -7,7 +7,7 @@ import ceylon.test {
     test,
     assertEquals
 }
-import lukedegruchy.ceylon.chayote.collections {
+import herd.chayote.collections {
     immutableMap,
     immutableList,
     immutableSet

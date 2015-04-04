@@ -4,7 +4,7 @@ import ceylon.test {
     assertFalse,
     assertEquals
 }
-import lukedegruchy.ceylon.chayote.object_helpers {
+import herd.chayote.object_helpers {
     hashes,
     equalsWith,
     equalsWithMulitple
