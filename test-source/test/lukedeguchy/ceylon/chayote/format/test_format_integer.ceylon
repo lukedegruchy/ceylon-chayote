@@ -2,6 +2,10 @@ import ceylon.test {
     test,
     assertEquals
 }
+import lukedegruchy.ceylon.chayote.format {
+    formatAndPadAsBits,
+    formatAndPadAsHex
+}
 
 // TODO: Put this and all other tests in a separate source folder
 

@@ -4,6 +4,11 @@ import ceylon.test {
     assertFalse,
     assertEquals
 }
+import lukedegruchy.ceylon.chayote.object_helpers {
+    hashes,
+    equalsWith,
+    equalsWithMulitple
+}
 
 test
 void testEqualsWithMultiple() {

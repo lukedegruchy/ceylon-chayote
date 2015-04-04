@@ -7,6 +7,11 @@ import ceylon.test {
     test,
     assertEquals
 }
+import lukedegruchy.ceylon.chayote.collections {
+    immutableMap,
+    immutableList,
+    immutableSet
+}
 
 test
 void testImmutableList() {
