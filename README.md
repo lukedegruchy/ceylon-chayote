@@ -1,7 +1,8 @@
 Ceylon Chayote
 ====================
 
-Various utility classes and methods for Ceylon:
+Various utility classes and methods for Ceylon.  These are intended to all be written in native Ceylon,
+with no dependency on JDK-specific modules.
 ---------------------
 
 * Format Integers as either hex or bits Strings with padding and underscores to make them more readable.
