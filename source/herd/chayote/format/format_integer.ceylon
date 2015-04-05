@@ -14,11 +14,6 @@ shared String formatAndPadAsBits(Integer integer)
 shared String formatAndPadAsHex(Integer integer) 
     => formatAndPad(integer,formatAsHex);
 
-shared void run() {
-    print(formatAndPadAsBits(30));
-    print(formatAndPadAsHex(30));
-}
-
 "Given an [[Integer]], return a [[String]] with the integer formatted as specified by the parameterized 
  function of type String(Integer).  The result of the function will be formatted in a human readable format 
  including separating out each set of 4 hex characters with underscores and prepending lending zeros to 
