@@ -58,11 +58,11 @@ Support left and right bit rotation on [[Integer]]s.
 Current version: 0.0.6
 
 Version history:
-0.0.1:  Format Integers as bits and hex.
-0.0.2:  Functions for immutable Lists, Sets, and Maps
-0.0.3:  Helper functions for equals() and hash
-0.0.4:  Functions to translate Integers into Sequences of Bytes and move unit tests to separate source folder
-0.0.5:  Refactor module to herd.chayote to simplify project structure and to qualify for Herd module inclusion
+- 0.0.1:  Format Integers as bits and hex.
+- 0.0.2:  Functions for immutable Lists, Sets, and Maps
+- 0.0.3:  Helper functions for equals() and hash
+- 0.0.4:  Functions to translate Integers into Sequences of Bytes and move unit tests to separate source folder
+- 0.0.5:  Refactor module to herd.chayote to simplify project structure and to qualify for Herd module inclusion
         according to required criteria.
-0.0.6:  Functions to left and right bit rotate on Integers.  Add properly formatted module, package, and function 
+- 0.0.6:  Functions to left and right bit rotate on Integers.  Add properly formatted module, package, and function 
         documentation.
