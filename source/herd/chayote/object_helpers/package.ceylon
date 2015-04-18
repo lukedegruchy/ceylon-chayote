@@ -12,6 +12,9 @@
                            [myObject.myString,otherObject.myString]);
 
  &gt; <b>true</b> or <b>false</b>
+ 
+        helpString(\"Thing\",  \"Name\"->\"FirstThing\", \"Number\"->1, \"Optional\"->null);
+ &gt; <b>\"Thing:{Name=FirstThing,Number=1,Optional=null}\"</b>
 "
 
 by("Luke deGruchy")

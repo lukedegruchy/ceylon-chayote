@@ -55,7 +55,8 @@ Support left and right bit rotation on [[Integer]]s.
          rotateRight($1010_0101, 4);
  &gt; <b>$0101_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_1010</b>
  
- Convenience function: helpString() to help output class [[string]] methods.
+ Convenience function: helpString() to help output class string attributes.
+
         helpString("Thing",  "Name"->"FirstThing", "Number"->1, "Optional"->null);
  &gt; <b>"Thing:{Name=FirstThing,Number=1,Optional=null}"</b>
         
