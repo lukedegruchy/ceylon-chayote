@@ -7,7 +7,8 @@ import ceylon.test {
 import herd.chayote.object_helpers {
     hashes,
     equalsWith,
-    equalsWithMulitple
+    equalsWithMulitple,
+    helpString
 }
 
 test
@@ -37,4 +38,18 @@ void testHashes() {
     assertEquals(hashes(1,"one"), 111174);
     assertEquals(hashes(1,2), 994);
     assertEquals(hashes("one","two"), 3531879);
+}
+
+test
+void testHelpString() {
+    void assertMe(String expectedString, String className, <String->Anything>* keyValues) {
+        assertEquals(helpString(className, *keyValues), expectedString);
+    }
+    
+    assertMe("Nothing:{}","Nothing");
+    assertMe("Thing:{Name=FirstThing,Number=1,Optional=null}",
+            "Thing", 
+            "Name"->"FirstThing", 
+            "Number"->1, 
+            "Optional"->null);
 }

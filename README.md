@@ -54,8 +54,12 @@ Support left and right bit rotation on [[Integer]]s.
 
          rotateRight($1010_0101, 4);
  &gt; <b>$0101_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_1010</b>
-
-Current version: 0.0.6
+ 
+ Convenience function: helpString() to help output class [[string]] methods.
+        helpString("Thing",  "Name"->"FirstThing", "Number"->1, "Optional"->null);
+ &gt; <b>"Thing:{Name=FirstThing,Number=1,Optional=null}"</b>
+        
+Current version: 0.0.7
 
 Version history:
 - 0.0.1:  Format Integers as bits and hex.
@@ -63,6 +67,9 @@ Version history:
 - 0.0.3:  Helper functions for equals() and hash
 - 0.0.4:  Functions to translate Integers into Sequences of Bytes and move unit tests to separate source folder
 - 0.0.5:  Refactor module to herd.chayote to simplify project structure and to qualify for Herd module inclusion
-        according to required criteria.
+          according to required criteria.
 - 0.0.6:  Functions to left and right bit rotate on Integers.  Add properly formatted module, package, and function 
-        documentation.
+          documentation.
+- 0.0.7:  Fix bug with integerToBytes not returning correct results on JavaScript. Fix bug with formatAndPadAsBits and 
+          formatAndPadAsHex not returning correct results in JavaScript.  Add helpString as a string(toString()) helper 
+          method. Fix documentation.

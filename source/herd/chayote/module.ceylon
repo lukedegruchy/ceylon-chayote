@@ -56,6 +56,6 @@
 
 by("Luke deGruchy")
 license("Apache Software License")
-module herd.chayote "0.0.6" {
+module herd.chayote "0.0.7" {
     import ceylon.collection "1.1.0";
 }

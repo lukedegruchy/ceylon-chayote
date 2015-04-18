@@ -19,3 +19,11 @@ shared Integer hashes<in Type>(Type* objects) {
     return objects.map((obj) => obj?.hash else 0) 
             .fold(1)((result,hash) => (result*prime) + hash);
 }
+
+"Convenience to implement a class's [[Object.string]] by specifying a class name and one or more key->item pairs for
+ each class attribute."
+shared String helpString(String className, <String->Anything>* nameValues)
+    => "``className``:{`` ",".join(nameValues
+                                   .map((nameValue) 
+                                        => nameValue.key + "=" + (nameValue.item?.string else "null")))
+                    ``}";
