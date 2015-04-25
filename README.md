@@ -91,4 +91,4 @@ Version history:
 - 0.0.7:  Fix bug with integerToBytes not returning correct results on JavaScript. Fix bug with formatAndPadAsBits and 
           formatAndPadAsHex not returning correct results in JavaScript.  Add helpString as a string(toString()) helper 
           method. Fix documentation.
-  0.0.8:  Introduce wrapper classes that subclass [[TypedClass]] and [[TypedClassComparable]].
+- 0.0.8:  Introduce wrapper classes that subclass [[TypedClass]] and [[TypedClassComparable]].
