@@ -59,8 +59,25 @@ Support left and right bit rotation on [[Integer]]s.
 
         helpString("Thing",  "Name"->"FirstThing", "Number"->1, "Optional"->null);
  &gt; <b>"Thing:{Name=FirstThing,Number=1,Optional=null}"</b>
+ 
+ Wrapper types for commonly used types to add unique typing.  Example, in contexts where several 
+ Integer variables are used for different concepts such as AccountNumber, ReferenceNumber, etc
+ 
+ Examples:
+       class AccountNumber(Integer baseValue) extends TypedInteger<AccountNumber>(baseValue) {}
+       class ReferenceNumber(Integer baseValue) extends TypedInteger<ReferenceNumber>(baseValue) {}
+ 
+       value accountNum1 = AccountNumber(\"1\");
+       value accountNum2 = AccountNumber(\"2\");
+ 
+       value refNum1 = ReferenceNumber(\"1\");
+       value refNum2 = ReferenceNumber(\"2\");
+       
+       assertFalse(accountNum1.equals(accountNum2);
+       assertFalse(accountNum1.equals(referenceNum1);
+       assertFalse(referenceNum2.equals(accountNum2);
         
-Current version: 0.0.7
+Current version: 0.0.8
 
 Version history:
 - 0.0.1:  Format Integers as bits and hex.
@@ -74,3 +91,4 @@ Version history:
 - 0.0.7:  Fix bug with integerToBytes not returning correct results on JavaScript. Fix bug with formatAndPadAsBits and 
           formatAndPadAsHex not returning correct results in JavaScript.  Add helpString as a string(toString()) helper 
           method. Fix documentation.
+  0.0.8:  Introduce wrapper classes that subclass [[TypedClass]] and [[TypedClassComparable]].

@@ -1,0 +1,25 @@
+import ceylon.language.meta.model {
+    Type,
+    nothingType
+}
+import ceylon.test {
+    test,
+    assertEquals
+}
+
+import herd.chayote.value_classes {
+    displayNameForType
+}
+
+test
+shared void testDisplayNameForType() {
+    void assertMe(Type type, String expectedDisplayName) {
+        assertEquals(displayNameForType(type), expectedDisplayName);
+    }
+
+    assertMe(`String`, "String");
+    assertMe(`String|Integer`, "String|Integer");
+    assertMe(`Identifiable&Obtainable`, "Identifiable&Obtainable");
+    assertMe(`Identifiable&Obtainable|String`, "Identifiable&Obtainable|String");
+    assertMe(nothingType, "nothingType");
+}
