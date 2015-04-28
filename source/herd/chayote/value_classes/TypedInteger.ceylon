@@ -1,4 +1,3 @@
 "Subclass of [[TypedClass]] for [[Integer]]s."
-shared abstract class TypedInteger<ThisType>(Integer baseValue) 
-        extends TypedClass<Integer,ThisType>(baseValue) 
-        given ThisType satisfies TypedInteger<ThisType> {}
+shared abstract class TypedInteger(Integer baseValue) 
+        extends TypedClass<Integer>(baseValue) {}

@@ -43,14 +43,6 @@
         integerToBytesNoZeros(941226);
  &gt; <b>[$1110.byte, $0101_1100.byte, $1010_1010.byte]</b>
  
- Support left and right bit rotation on [[Integer]]s.
- 
-        rotateLeft($1010_0101, 4);
- &gt; <b>$1010_0101_0000</b>
-
-         rotateRight($1010_0101, 4);
- &gt; <b>$0101_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_1010</b>
- 
   Convenience function: helpString() to help output class string attributes.
  
         helpString(\"Thing\",  \"Name\"->\"FirstThing\", \"Number\"->1, \"Optional\"->null);
@@ -60,8 +52,8 @@
  Integer variables are used for different concepts such as AccountNumber, ReferenceNumber, etc
  
  Examples:
-       class AccountNumber(Integer baseValue) extends TypedInteger<AccountNumber>(baseValue) {}
-       class ReferenceNumber(Integer baseValue) extends TypedInteger<ReferenceNumber>(baseValue) {}
+       class AccountNumber(Integer baseValue) extends TypedInteger(baseValue) {}
+       class ReferenceNumber(Integer baseValue) extends TypedInteger(baseValue) {}
  
        value accountNum1 = AccountNumber(\"1\");
        value accountNum2 = AccountNumber(\"2\");
@@ -76,6 +68,6 @@
 
 by("Luke deGruchy")
 license("Apache Software License")
-module herd.chayote "0.0.8" {
+module herd.chayote "0.0.9" {
     import ceylon.collection "1.1.0";
 }

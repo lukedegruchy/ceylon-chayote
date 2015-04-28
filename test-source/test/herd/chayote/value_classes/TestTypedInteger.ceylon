@@ -10,8 +10,8 @@ import herd.chayote.value_classes {
 
 test
 void testTypedInteger() {
-    class MyInteger(Integer baseValue) extends TypedInteger<MyInteger>(baseValue) {}
-    class MyInteger2(Integer baseValue) extends TypedInteger<MyInteger2>(baseValue) {}
+    class MyInteger(Integer baseValue) extends TypedInteger(baseValue) {}
+    class MyInteger2(Integer baseValue) extends TypedInteger(baseValue) {}
     
     value myInteger = MyInteger(59);
     

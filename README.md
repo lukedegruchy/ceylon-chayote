@@ -47,14 +47,6 @@ Functions to translate Integers into Sequences of Bytes
         integerToBytesNoZeros(941226);
  &gt; <b>[$1110.byte, $0101_1100.byte, $1010_1010.byte]</b>
  
-Support left and right bit rotation on [[Integer]]s.
- 
-        rotateLeft($1010_0101, 4);
- &gt; <b>$1010_0101_0000</b>
-
-         rotateRight($1010_0101, 4);
- &gt; <b>$0101_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_1010</b>
- 
  Convenience function: helpString() to help output class string attributes.
 
         helpString("Thing",  "Name"->"FirstThing", "Number"->1, "Optional"->null);
@@ -64,8 +56,8 @@ Support left and right bit rotation on [[Integer]]s.
  Integer variables are used for different concepts such as AccountNumber, ReferenceNumber, etc
  
  Examples:
-       class AccountNumber(Integer baseValue) extends TypedInteger<AccountNumber>(baseValue) {}
-       class ReferenceNumber(Integer baseValue) extends TypedInteger<ReferenceNumber>(baseValue) {}
+       class AccountNumber(Integer baseValue) extends TypedInteger(baseValue) {}
+       class ReferenceNumber(Integer baseValue) extends TypedInteger(baseValue) {}
  
        value accountNum1 = AccountNumber(\"1\");
        value accountNum2 = AccountNumber(\"2\");
@@ -77,7 +69,7 @@ Support left and right bit rotation on [[Integer]]s.
        assertFalse(accountNum1.equals(referenceNum1);
        assertFalse(referenceNum2.equals(accountNum2);
         
-Current version: 0.0.8
+Current version: 0.0.9
 
 Version history:
 - 0.0.1:  Format Integers as bits and hex.
@@ -92,3 +84,5 @@ Version history:
           formatAndPadAsHex not returning correct results in JavaScript.  Add helpString as a string(toString()) helper 
           method. Fix documentation.
 - 0.0.8:  Introduce wrapper classes that subclass [[TypedClass]] and [[TypedClassComparable]].
+- 0.0.9:  Simplify wrapper classes by removing an extra generic type parameter.  Remove erroneous documentation about 
+          un-introduced Integer bit rotation feature.

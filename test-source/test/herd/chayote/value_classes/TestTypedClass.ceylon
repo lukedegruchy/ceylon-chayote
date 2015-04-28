@@ -10,13 +10,13 @@ import herd.chayote.value_classes {
 
 shared class Gorfle(String name) {}
 
-shared abstract class TypedGorfle<ThisType>(Gorfle baseValue) 
-        extends TypedClass<Gorfle,ThisType>(baseValue) {}
+shared abstract class TypedGorfle(Gorfle baseValue) 
+        extends TypedClass<Gorfle>(baseValue) {}
 
 test
 void testTypedClass() {
-    class MyGorfle1(Gorfle baseValue) extends TypedGorfle<MyGorfle1>(baseValue) {}
-    class MyGorfle2(Gorfle baseValue) extends TypedGorfle<MyGorfle2>(baseValue) {}
+    class MyGorfle1(Gorfle baseValue) extends TypedGorfle(baseValue) {}
+    class MyGorfle2(Gorfle baseValue) extends TypedGorfle(baseValue) {}
     
     value gorfle = Gorfle("myGorfle");
     value myGorfle1 = MyGorfle1(gorfle);

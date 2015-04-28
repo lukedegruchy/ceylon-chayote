@@ -12,14 +12,13 @@ shared class Gorkle(String name) satisfies Comparable<Gorkle> {
     shared actual Comparison compare(Gorkle other) => name.compare(other.name);
 }
 
-shared abstract class TypedGorkle<ThisType>(Gorkle baseValue) 
-        extends TypedClassComparable<Gorkle,ThisType>(baseValue) 
-        given ThisType satisfies TypedGorkle<ThisType> {}
+shared abstract class TypedGorkle(Gorkle baseValue) 
+        extends TypedClassComparable<Gorkle>(baseValue) {}
 
 test
 void testTypedClassComprable() {
-    class MyGorkle1(Gorkle baseValue) extends TypedGorkle<MyGorkle1>(baseValue) {}
-    class MyGorkle2(Gorkle baseValue) extends TypedGorkle<MyGorkle2>(baseValue) {}
+    class MyGorkle1(Gorkle baseValue) extends TypedGorkle(baseValue) {}
+    class MyGorkle2(Gorkle baseValue) extends TypedGorkle(baseValue) {}
     
     value gorkle = Gorkle("myGorkle");
     value myGorkle1 = MyGorkle1(gorkle);

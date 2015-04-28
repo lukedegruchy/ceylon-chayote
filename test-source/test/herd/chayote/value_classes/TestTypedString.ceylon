@@ -12,8 +12,8 @@ import herd.chayote.value_classes {
 
 test
 void testTypedString() {
-    class MyString1(String baseValue) extends TypedString<MyString1>(baseValue) {}
-    class MyString2(String baseValue) extends TypedString<MyString2>(baseValue) {}
+    class MyString1(String baseValue) extends TypedString(baseValue) {}
+    class MyString2(String baseValue) extends TypedString(baseValue) {}
     
     value bob1 = MyString1("bob");
     
