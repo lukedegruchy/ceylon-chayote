@@ -17,10 +17,14 @@ import herd.chayote.object_helpers {
  comparable to other ReferenceNumber classes, otherwise identical base values of different TypedInteger subclasses
  will not be considered equal according to equals().
  "
-shared abstract class TypedClass<ValueType>(shared ValueType baseValue) 
+shared abstract class TypedClass<ValueType>("Underlying value wrapped by the [[TypedClass]]"
+                                            shared ValueType baseValue) 
         given ValueType satisfies Object {
     
+    "[[Type]] associated with the [[TypedClass]]"
     shared Type classType => type(this);
+    
+    "Display name of the type (ex TypedString is \"TypedString\""
     shared String name => displayNameForType(classType);
     
     shared actual default Boolean equals(Object other) {
