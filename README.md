@@ -56,6 +56,7 @@ Functions to translate Integers into Sequences of Bytes
  Integer variables are used for different concepts such as AccountNumber, ReferenceNumber, etc
  
  Examples:
+
        class AccountNumber(Integer baseValue) extends TypedInteger(baseValue) {}
        class ReferenceNumber(Integer baseValue) extends TypedInteger(baseValue) {}
  
