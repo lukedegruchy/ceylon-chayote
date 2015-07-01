@@ -37,4 +37,4 @@
  
  &gt; <b>String|Integer</b>
  "
-shared package herd.chayote.value_classes;
+shared package herd.chayote.type_classes;

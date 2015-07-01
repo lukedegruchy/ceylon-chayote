@@ -70,7 +70,7 @@ Functions to translate Integers into Sequences of Bytes
        assertFalse(accountNum1.equals(referenceNum1);
        assertFalse(referenceNum2.equals(accountNum2);
         
-Current version: 0.0.9
+Current version: 0.0.10
 
 Version history:
 - 0.0.1:  Format Integers as bits and hex.
@@ -87,3 +87,4 @@ Version history:
 - 0.0.8:  Introduce wrapper classes that subclass [[TypedClass]] and [[TypedClassComparable]].
 - 0.0.9:  Simplify wrapper classes by removing an extra generic type parameter.  Remove erroneous documentation about 
           un-introduced Integer bit rotation feature.
+- 0.0.10  Rename value_classes package to type_classes and introduce general Binary to [Byte] conversion functions.

@@ -18,7 +18,7 @@ shared String displayNameForType<in MyType>(Type<MyType> theType) {
                 .sequence()
                 [0] else declarationName;
     } else if (is UnionType<MyType> theType) {
-        return "|".join(theType.caseTypes.map(displayNameForType<MyType>));
+        return "|".join(theType.caseTypes.map(displayNameForType<Anything>));
     } else if (is IntersectionType<MyType> theType) {
         return "&".join(theType.satisfiedTypes.map(displayNameForType<Anything>));
     } else if (nothingType == theType) {

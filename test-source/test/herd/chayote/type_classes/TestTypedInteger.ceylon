@@ -4,7 +4,7 @@ import ceylon.test {
     assertFalse
 }
 
-import herd.chayote.value_classes {
+import herd.chayote.type_classes {
     TypedInteger
 }
 
