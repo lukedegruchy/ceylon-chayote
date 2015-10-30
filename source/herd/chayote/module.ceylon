@@ -7,7 +7,7 @@
 
  &gt; <b>0001_1110</b>
 
-        print(formatAndPadAsHex(500000); 
+        print(formatAndPadAsHex(500000);
 
  &gt; <b>0007_a120</b>
 
@@ -29,11 +29,11 @@
 
  &gt; <b>true</b> or <b>false</b>
 
-        equalsWithMultiple([myObject.myInteger,otherObject.myInteger], 
+        equalsWithMultiple([myObject.myInteger,otherObject.myInteger],
                            [myObject.myString,otherObject.myString]);
 
  &gt; <b>true</b> or <b>false</b>
-                       
+
  Functions to translate Integers into Sequences of Bytes
 
         integerToBytes(941226);
@@ -42,25 +42,25 @@
 
         integerToBytesNoZeros(941226);
  &gt; <b>[$1110.byte, $0101_1100.byte, $1010_1010.byte]</b>
- 
+
   Convenience function: helpString() to help output class string attributes.
- 
+
         helpString(\"Thing\",  \"Name\"->\"FirstThing\", \"Number\"->1, \"Optional\"->null);
  &gt; <b>\"Thing:{Name=FirstThing,Number=1,Optional=null}\"</b>
 
- Wrapper types for commonly used types to add unique typing.  Example, in contexts where several 
+ Wrapper types for commonly used types to add unique typing.  Example, in contexts where several
  Integer variables are used for different concepts such as AccountNumber, ReferenceNumber, etc
- 
+
  Examples:
        class AccountNumber(Integer baseValue) extends TypedInteger(baseValue) {}
        class ReferenceNumber(Integer baseValue) extends TypedInteger(baseValue) {}
- 
+
        value accountNum1 = AccountNumber(\"1\");
        value accountNum2 = AccountNumber(\"2\");
- 
+
        value refNum1 = ReferenceNumber(\"1\");
        value refNum2 = ReferenceNumber(\"2\");
-       
+
        assertFalse(accountNum1.equals(accountNum2);
        assertFalse(accountNum1.equals(referenceNum1);
        assertFalse(referenceNum2.equals(accountNum2);
@@ -68,6 +68,6 @@
 
 by("Luke deGruchy")
 license("Apache Software License")
-module herd.chayote "0.0.10" {
-    import ceylon.collection "1.1.0";
+module herd.chayote "0.0.11" {
+    import ceylon.collection "1.2.0";
 }

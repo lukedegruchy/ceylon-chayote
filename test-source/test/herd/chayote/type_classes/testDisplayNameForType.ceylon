@@ -13,7 +13,7 @@ import herd.chayote.type_classes {
 
 test
 shared void testDisplayNameForType() {
-    void assertMe(Type type, String expectedDisplayName) {
+    void assertMe(Type<> type, String expectedDisplayName) {
         assertEquals(displayNameForType(type), expectedDisplayName);
     }
 
