@@ -70,7 +70,7 @@ Functions to translate Integers into Sequences of Bytes
        assertFalse(accountNum1.equals(referenceNum1);
        assertFalse(referenceNum2.equals(accountNum2);
         
-Current version: 0.0.10
+Current version: 0.0.11
 
 Version history:
 - 0.0.1:  Format Integers as bits and hex.
@@ -88,3 +88,5 @@ Version history:
 - 0.0.9:  Simplify wrapper classes by removing an extra generic type parameter.  Remove erroneous documentation about 
           un-introduced Integer bit rotation feature.
 - 0.0.10  Rename value_classes package to type_classes and introduce general Binary to [Byte] conversion functions.
+- 0.0.11  Update to Ceylon 1.2.0.  Minor changes to leverage new language features.  Eliminate Integer rotation as there's 
+          no way to make it work reliably on the JavaScript runtime.
