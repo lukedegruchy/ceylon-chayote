@@ -1,7 +1,7 @@
 "Various utility classes and methods for Ceylon.  These are intended to all be written in native Ceylon,
  with no dependency on JDK-specific modules.
 
-  Format Integers as either hex or bits Strings with padding and underscores to make them more readable.
+  Format [Integer]s or [[com.vasileff.ceylon.xmath.long::Long]]s as either hex or bits Strings with padding and underscores to make them more readable.
 
         print(formatAndPadAsBits(30));
 
@@ -11,13 +11,13 @@
 
  &gt; <b>0007_a120</b>
 
- Functions to return immutable collections succinctly:
+ Determine whether an [Integer] has too many (or too few in the case of negative) bits on a Ceylon platform (JVM or JS)
 
-        List<String> anImmutableList = immutableList{\"one\",\"two\",\"three\"};
+        print(isOverflowOnPlatform($0010_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000));
 
-        Set<Integer> anImmutableSet = immutableSet{1,2,3};
+ &gt; <b>false</b> (JVM)
 
-        Map<String,Integer> anImmutableMap = immutableMap{\"one\"->1,\"two\"->2,\"three\"->3};
+ &gt; <b>true</b> (JS)
 
  Helper functions for equals() and hash:
 
@@ -34,7 +34,7 @@
 
  &gt; <b>true</b> or <b>false</b>
 
- Functions to translate Integers into Sequences of Bytes
+ Functions to translate [Integer]s or [[com.vasileff.ceylon.xmath.long::Long]]s into Sequences of Bytes
 
         integerToBytes(941226);
 
@@ -68,6 +68,8 @@
 
 by("Luke deGruchy")
 license("Apache Software License")
-module herd.chayote "0.0.11" {
+module herd.chayote "0.0.12" {
     import ceylon.collection "1.2.0";
+    // TODO:  switch to ceylon.xmath when this is integrated into the Ceylon SDK
+    shared import com.vasileff.ceylon.xmath "0.0.1";
 }

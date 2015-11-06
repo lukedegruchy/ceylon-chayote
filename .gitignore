@@ -4,3 +4,5 @@
 /modules/
 /reports/
 /doc/
+/*.patch
+/.DS_Store

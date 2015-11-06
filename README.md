@@ -15,14 +15,6 @@ with no dependency on JDK-specific modules.
 
  &gt; <b>0007_a120</b>
 
- Functions to return immutable collections succinctly:
-
-        List<String> anImmutableList = immutableList{\"one\",\"two\",\"three\"};
-
-        Set<Integer> anImmutableSet = immutableSet{1,2,3};
-
-        Map<String,Integer> anImmutableMap = immutableMap{\"one\"->1,\"two\"->2,\"three\"->3};
-
  Helper functions for equals() and hash:
 
         hashes(myObject.myInteger,myObject.myString);
@@ -89,4 +81,5 @@ Version history:
           un-introduced Integer bit rotation feature.
 - 0.0.10  Rename value_classes package to type_classes and introduce general Binary to [Byte] conversion functions.
 - 0.0.11  Update to Ceylon 1.2.0.  Minor changes to leverage new language features.  Eliminate Integer rotation as there's 
-          no way to make it work reliably on the JavaScript runtime.
+          no way to make it work reliably on the JavaScript runtime.  Also eliminate immutable collections functionality s
+          since this is now in ceylon.language.
