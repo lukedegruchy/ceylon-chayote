@@ -10,7 +10,8 @@ import com.vasileff.ceylon.xmath.long {
 
 import herd.chayote.format {
     formatAndPadAsBits,
-    formatAndPadAsHex
+    formatAndPadAsHex,
+    formatAndPadAsHexNoUnderscores
 }
 import herd.chayote.numeric {
     isOverflowOnPlatform
@@ -98,6 +99,26 @@ shared void testFormatAndPadHexLong() {
     assertFormatAndPadHexLong(#7fffffffffffffff, null);
 }
 
+native
+test
+shared void testFormatAndPadHexLongNoUnderscores();
+
+native("jvm")
+test
+shared void testFormatAndPadHexLongNoUnderscores() {
+    formatAndPadHexCommonLongNoUnderscores();
+
+    assertFormatAndPadHexLongNoUnderscores(#7fffffffffffffff, 4, "7fffffffffffffff");
+}
+
+native("js")
+test
+shared void testFormatAndPadHexLongNoUnderscores() {
+    formatAndPadHexCommonLongNoUnderscores();
+
+    assertFormatAndPadHexLongNoUnderscores(#7fffffffffffffff, 4, null);
+}
+
 void formatAndPadHexCommon() {
     assertFormatAndPadHex(#ffff, "ffff");
     assertFormatAndPadHex(#ffff_ffff, "ffff_ffff");
@@ -110,6 +131,19 @@ void formatAndPadHexCommonLong() {
     assertFormatAndPadHexLong(#ffff_ffff, "ffff_ffff");
     assertFormatAndPadHexLong(#05a_6c1b_ffff, "005a_6c1b_ffff");
     assertFormatAndPadHexLong(500000, "0007_a120");
+}
+
+void formatAndPadHexCommonLongNoUnderscores() {
+    assertFormatAndPadHexLongNoUnderscores(#12345, 2, "012345");
+    assertFormatAndPadHexLongNoUnderscores(#12345, 3, "012345");
+    assertFormatAndPadHexLongNoUnderscores(#12345, 4, "00012345");
+    assertFormatAndPadHexLongNoUnderscores(#12345, 5, "12345");
+    assertFormatAndPadHexLongNoUnderscores(#12345, 6, "012345");
+    assertFormatAndPadHexLongNoUnderscores(#12345, 7, "0012345");
+    assertFormatAndPadHexLongNoUnderscores(#ffff, 4, "ffff");
+    assertFormatAndPadHexLongNoUnderscores(#ffff_ffff, 4,"ffffffff");
+    assertFormatAndPadHexLongNoUnderscores(#05a_6c1b_ffff, 4,"005a6c1bffff");
+    assertFormatAndPadHexLongNoUnderscores(500000, 4,"0007a120");
 }
 
 void formatBitsCommon() {
@@ -139,6 +173,14 @@ void assertFormatAndPadHexLong(Integer int, String? equalTo) {
         assertNull(equalTo);
     } else {
         assertEquals(formatAndPadAsHex(longNumber(int)), equalTo);
+    }
+}
+
+void assertFormatAndPadHexLongNoUnderscores(Integer int, Integer toPad, String? equalTo) {
+    if (isOverflowOnPlatform(int)) {
+        assertNull(equalTo);
+    } else {
+        assertEquals(formatAndPadAsHexNoUnderscores(longNumber(int), toPad), equalTo);
     }
 }
 

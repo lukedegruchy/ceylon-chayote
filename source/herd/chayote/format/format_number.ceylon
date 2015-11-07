@@ -26,28 +26,50 @@ shared String? formatAndPadAsHex(Integer|XLong number)
     => formatAndPad(number,formatAsHex);
 
 "Given an [[Integer]] | [[com.vasileff.ceylon.xmath.long::Long]], return a [[String]] with the integer formatted
- as specified by the parameterized function of type String(Integer).  The result of the function will be formatted
+ as hex in a human readable format, including prepending lending zeros to pad each set to 4 characters.
+
+ ex:   formatAndPadAsHex(500000, 4) >>> 0007a120"
+shared String? formatAndPadAsHexNoUnderscores(Integer|XLong number, Integer toPad)
+    => formatAndPadNoUnderscores(number,formatAsHex, toPad);
+
+"Given an [[Integer]] | [[com.vasileff.ceylon.xmath.long::Long]], return a [[String]] with the integer formatted
+ as specified by the parameterized function of type String(Integer|Long).  The result of the function will be formatted
  in a human readable format including separating out each set of 4 hex characters with underscores and prepending
  lending zeros to pad each set to 4 characters."
-shared String? formatAndPad(Integer|XLong number, String formatAndPadNumber(Integer|XLong toFormat))
+shared String? formatAndPad(Integer|XLong number, String formatNumber(Integer|XLong toFormat))
+    => formatAndPadBase(number, formatNumber, addUnderscores);
+
+"Given an [[Integer]] | [[com.vasileff.ceylon.xmath.long::Long]], return a [[String]] with the integer formatted
+ as specified by the parameterized function of type String(Integer|Long).  The result of the function will be formatted
+ in a human readable format and prepending lending zeros to pad each set to 4 characters."
+shared String? formatAndPadNoUnderscores(Integer|XLong number,
+                                         String formatNumber(Integer|XLong toFormat),
+                                         Integer toPad)
+    => formatAndPadBase(number, formatNumber, String.string, toPad);
+
+String? formatAndPadBase(Integer|XLong number,
+                         String formatNumber(Integer|XLong toFormat),
+                         String(String) processPadded,
+                         Integer toPad=4)
     => if (is Integer number, isOverflowOnPlatform(number))
-        then null
-        else padStringTo4(String(formatAndPadNumber(number).reversed
-            .interpose('_', 4))
-            .reversed);
+       then null
+       else processPadded(padString(formatNumber(number), toPad));
 
-String? formatAndPadAsHexNoUnderscores(Integer|XLong number,
-                                       Integer toPad,
-                                       String(Integer|XLong,Integer) format)
-    => format(number, 16).padLeading(toPad, '0');
+String padString(String string, Integer toPad=4) {
+    value modulo = string.size % toPad;
 
-String padStringTo4(String string) {
-    {String*} split = string.split((ch) => ch == '_', false, false);
+    if (modulo == 0) {
+        return string;
+    }
 
-    assert(exists first=split.first);
+    value spanTo = string.spanTo(modulo -1);
+    value spanFrom = string.spanFrom(modulo);
 
-    return first.padLeading(4, '0') + "".join(split.rest);
+    return spanTo.padLeading(toPad, '0') + spanFrom;
 }
+
+String addUnderscores(String string)
+    => String(string.reversed.interpose('_', 4)).reversed;
 
 String formatAsHex(Integer|XLong number)
     => switch (number)
