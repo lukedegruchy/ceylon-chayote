@@ -62,7 +62,7 @@ Functions to translate Integers into Sequences of Bytes
        assertFalse(accountNum1.equals(referenceNum1);
        assertFalse(referenceNum2.equals(accountNum2);
         
-Current version: 0.0.11
+Current version: 0.0.12
 
 Version history:
 - 0.0.1:  Format Integers as bits and hex.
@@ -83,3 +83,4 @@ Version history:
 - 0.0.11  Update to Ceylon 1.2.0.  Minor changes to leverage new language features.  Eliminate Integer rotation as there's 
           no way to make it work reliably on the JavaScript runtime.  Also eliminate immutable collections functionality s
           since this is now in ceylon.language.
+- 0.0.12  Integrate with ceylon-xmath to support functions using Longs. 
