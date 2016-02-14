@@ -1,7 +1,6 @@
-import com.vasileff.ceylon.xmath.long {
-    XLong=Long
+import com.vasileff.ceylon.integer64 {
+    Integer64
 }
-
 Integer numBitsInByte = 8;
 Integer numBytesInInteger = runtime.integerAddressableSize / numBitsInByte;
 
@@ -16,17 +15,17 @@ shared [Byte*] integerToBytesNoZeros(Integer integer)
 shared [Byte+] integerToBytes(Integer integer)
     => binaryToBytes<Integer>(integer, Integer.byte);
 
-"Given a [[com.vasileff.ceylon.xmath.long::Long]] return a [[Sequence]] of [[Byte]]s with any leading 0 bytes removed."
-shared [Byte*] longToBytesNoZeros(XLong long)
-    => binaryToBytesNoZeros(long, XLong.byte);
+"Given a [[com.vasileff.ceylon.integer64::Integer64]] return a [[Sequence]] of [[Byte]]s with any leading 0 bytes removed."
+shared [Byte*] integer64ToBytesNoZeros(Integer64 integer64)
+    => binaryToBytesNoZeros(integer64, Integer64.byte);
 
-"Given an [[com.vasileff.ceylon.xmath.long::Long]] return a [[Sequence]] of [[Byte]]s including any
+"Given an [[com.vasileff.ceylon.integer64::Integer64]] return a [[Sequence]] of [[Byte]]s including any
  leading 0 bytes up to max number of bytes.
 
  The max number of bytes in an Integer is driven off [[runtime.integerAddressableSize]], which in the JVM
  is 64 and node.js is 32."
-shared [Byte+] longToBytes(XLong long)
-    => binaryToBytes<XLong>(long, XLong.byte);
+shared [Byte+] integer64ToBytes(Integer64 integer64)
+    => binaryToBytes<Integer64>(integer64, Integer64.byte);
 
 "Given an [[Binary]] and a function to return a [[Byte]] from that [[Binary]],
  return a [[Sequence]] of [[Byte]]s with any leading 0 bytes removed."

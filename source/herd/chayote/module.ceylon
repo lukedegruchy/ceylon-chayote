@@ -1,7 +1,7 @@
 "Various utility classes and methods for Ceylon.  These are intended to all be written in native Ceylon,
  with no dependency on JDK-specific modules.
 
-  Format [Integer]s or [[com.vasileff.ceylon.xmath.long::Long]]s as either hex or bits Strings with padding and underscores to make them more readable.
+  Format [[Integer]]s or [[com.vasileff.ceylon.integer64::Integer64]]s as either hex or bits Strings with padding and underscores to make them more readable.
 
         print(formatAndPadAsBits(30));
 
@@ -11,7 +11,7 @@
 
  &gt; <b>0007_a120</b>
 
- Determine whether an [Integer] has too many (or too few in the case of negative) bits on a Ceylon platform (JVM or JS)
+ Determine whether an [[Integer] has too many (or too few in the case of negative) bits on a Ceylon platform (JVM or JS)
 
         print(isOverflowOnPlatform($0010_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000));
 
@@ -34,7 +34,7 @@
 
  &gt; <b>true</b> or <b>false</b>
 
- Functions to translate [Integer]s or [[com.vasileff.ceylon.xmath.long::Long]]s into Sequences of Bytes
+ Functions to translate [[Integer]]s or [[com.vasileff.ceylon.integer64::Integer64]]s into Sequences of Bytes
 
         integerToBytes(941226);
 
@@ -68,8 +68,8 @@
 
 by("Luke deGruchy")
 license("Apache Software License")
-module herd.chayote "0.0.12" {
-    import ceylon.collection "1.2.0";
+module herd.chayote "0.0.13" {
+    import ceylon.collection "1.2.1";
     // TODO:  switch to ceylon.xmath when this is integrated into the Ceylon SDK
-    shared import com.vasileff.ceylon.xmath "0.0.1";
+    shared import com.vasileff.ceylon.integer64 "1.0.0";
 }

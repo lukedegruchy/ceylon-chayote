@@ -1,19 +1,20 @@
 import ceylon.test {
     test,
-    assertEquals
+    assertEquals,
+    fail
 }
 
-import com.vasileff.ceylon.xmath.long {
-    Long,
-    longNumber,
-    zero
+import com.vasileff.ceylon.integer64 {
+    zero,
+    Integer64,
+    integer64
 }
 
 import herd.chayote.bytes {
     integerToBytes,
-    longToBytes,
+    integer64ToBytes,
     integerToBytesNoZeros,
-    longToBytesNoZeros
+    integer64ToBytesNoZeros
 }
 
 // TODO:  File bug for unshared unit test failing in JavaScript with weird error
@@ -41,22 +42,22 @@ shared void testIntegerToBytes() {
 
 native
 test
-shared void testLongToBytes();
+shared void testinteger64ToBytes();
 
 native("jvm")
 test
-shared void testLongToBytes() {
-    assertLongToBytes(longNumber($0101_1100_1010_1010), [$0.byte, $0.byte, $0.byte, $0.byte, $0.byte, $0.byte, $0101_1100.byte, $1010_1010.byte]);
-    assertLongToBytes(longNumber($1110_0101_1100_1010_1010), [$0.byte, $0.byte, $0.byte, $0.byte, $0.byte, $1110.byte, $0101_1100.byte, $1010_1010.byte]);
-    assertLongToBytes(longNumber($0), [$0.byte, $0.byte, $0.byte, $0.byte, $0.byte, $0.byte, $0.byte, $0.byte]);
+shared void testinteger64ToBytes() {
+    assertInteger64ToBytes(integer64($0101_1100_1010_1010), [$0.byte, $0.byte, $0.byte, $0.byte, $0.byte, $0.byte, $0101_1100.byte, $1010_1010.byte]);
+    assertInteger64ToBytes(integer64($1110_0101_1100_1010_1010), [$0.byte, $0.byte, $0.byte, $0.byte, $0.byte, $1110.byte, $0101_1100.byte, $1010_1010.byte]);
+    assertInteger64ToBytes(integer64($0), [$0.byte, $0.byte, $0.byte, $0.byte, $0.byte, $0.byte, $0.byte, $0.byte]);
 }
 
 native("js")
 test
-shared void testLongToBytes() {
-    assertLongToBytes(longNumber($0101_1100_1010_1010), [$0.byte, $0.byte, $0101_1100.byte, $1010_1010.byte]);
-    assertLongToBytes(longNumber($1110_0101_1100_1010_1010), [$0.byte, $1110.byte, $0101_1100.byte, $1010_1010.byte]);
-    assertLongToBytes(zero, [$0.byte, $0.byte, $0.byte, $0.byte]);
+shared void testinteger64ToBytes() {
+    assertInteger64ToBytes(integer64($0101_1100_1010_1010), [$0.byte, $0.byte, $0101_1100.byte, $1010_1010.byte]);
+    assertInteger64ToBytes(integer64($1110_0101_1100_1010_1010), [$0.byte, $1110.byte, $0101_1100.byte, $1010_1010.byte]);
+    assertInteger64ToBytes(zero, [$0.byte, $0.byte, $0.byte, $0.byte]);
 }
 
 native
@@ -81,36 +82,44 @@ shared void testIntegerToBytesNoLeadingZeros() {
 
 native
 test
-shared void testLongToBytesNoLeadingZeros();
+shared void testinteger64ToBytesNoLeadingZeros();
 
 native("jvm")
 test
-shared void testLongToBytesNoLeadingZeros() {
-    assertLongToBytesNoZeros(longNumber($0101_1100_1010_1010), [$0101_1100.byte, $1010_1010.byte]);
-    assertLongToBytesNoZeros(longNumber($1110_0101_1100_1010_1010), [$1110.byte, $0101_1100.byte, $1010_1010.byte]);
-    assertLongToBytesNoZeros(zero, [$0.byte]);
+shared void testinteger64ToBytesNoLeadingZeros() {
+    assertInteger64ToBytesNoZeros(integer64($0101_1100_1010_1010), [$0101_1100.byte, $1010_1010.byte]);
+    assertInteger64ToBytesNoZeros(integer64($1110_0101_1100_1010_1010), [$1110.byte, $0101_1100.byte, $1010_1010.byte]);
+    assertInteger64ToBytesNoZeros(zero, [$0.byte]);
 }
 
 native("js")
 test
-shared void testLongToBytesNoLeadingZeros() {
-    assertLongToBytesNoZeros(longNumber($0101_1100_1010_1010), [$0101_1100.byte, $1010_1010.byte]);
-    assertLongToBytesNoZeros(longNumber($1110_0101_1100_1010_1010), [$1110.byte, $0101_1100.byte, $1010_1010.byte]);
-    assertLongToBytesNoZeros(zero, [$0.byte]);
+shared void testinteger64ToBytesNoLeadingZeros() {
+    assertInteger64ToBytesNoZeros(integer64($0101_1100_1010_1010), [$0101_1100.byte, $1010_1010.byte]);
+    assertInteger64ToBytesNoZeros(integer64($1110_0101_1100_1010_1010), [$1110.byte, $0101_1100.byte, $1010_1010.byte]);
+    assertInteger64ToBytesNoZeros(zero, [$0.byte]);
 }
 
 void assertIntegerToBytes(Integer bits, Byte[] bytes) {
     assertEquals(integerToBytes(bits),bytes);
 }
 
-void assertLongToBytes(Long bits, Byte[] bytes) {
-    assertEquals(longToBytes(bits),bytes);
+void assertInteger64ToBytes(Integer64? bits, Byte[] bytes) {
+    if (exists existingBits = bits) {
+        assertEquals(integer64ToBytes(existingBits),bytes);
+    } else {
+        fail("Integer literal is too large to fit into platform's capacity.");
+    }
 }
 
 void assertIntegerToBytesNoZeros(Integer bits, Byte[] bytes) {
     assertEquals(integerToBytesNoZeros(bits),bytes);
 }
 
-void assertLongToBytesNoZeros(Long bits, Byte[] bytes) {
-    assertEquals(longToBytesNoZeros(bits),bytes);
+void assertInteger64ToBytesNoZeros(Integer64? bits, Byte[] bytes) {
+    if (exists existingBits = bits) {
+        assertEquals(integer64ToBytesNoZeros(existingBits),bytes);
+    } else {
+        fail("Integer literal is too large to fit into platform's capacity.");
+    }
 }

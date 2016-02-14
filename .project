@@ -17,10 +17,6 @@
 					<key>compileJs</key>
 					<value>true</value>
 				</dictionary>
-				<dictionary>
-					<key>explodeModules</key>
-					<value>true</value>
-				</dictionary>
 			</arguments>
 		</buildCommand>
 	</buildSpec>
