@@ -52,8 +52,8 @@
  Integer variables are used for different concepts such as AccountNumber, ReferenceNumber, etc
 
  Examples:
-       class AccountNumber(Integer baseValue) extends TypedInteger(baseValue) {}
-       class ReferenceNumber(Integer baseValue) extends TypedInteger(baseValue) {}
+       class AccountNumber(Integer baseValue) extends WrappedInteger(baseValue) {}
+       class ReferenceNumber(Integer baseValue) extends WrappedInteger(baseValue) {}
 
        value accountNum1 = AccountNumber(\"1\");
        value accountNum2 = AccountNumber(\"2\");
@@ -68,8 +68,9 @@
 
 by("Luke deGruchy")
 license("Apache Software License")
-module herd.chayote "0.0.13" {
-    import ceylon.collection "1.2.1";
+module herd.chayote "0.0.14" {
+    import ceylon.collection "1.2.2";
+    shared import ceylon.buffer "1.2.2";
     // TODO:  switch to ceylon.xmath when this is integrated into the Ceylon SDK
-    shared import com.vasileff.ceylon.integer64 "1.0.0";
+    shared import com.vasileff.ceylon.integer64 "1.0.2";
 }

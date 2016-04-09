@@ -7,7 +7,7 @@ import ceylon.test {
     assertEquals
 }
 
-import herd.chayote.type_classes {
+import herd.chayote.wrapper_type {
     displayNameForType
 }
 

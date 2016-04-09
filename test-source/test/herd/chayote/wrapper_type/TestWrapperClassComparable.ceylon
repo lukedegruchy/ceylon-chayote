@@ -4,26 +4,26 @@ import ceylon.test {
     assertNotEquals
 }
 
-import herd.chayote.type_classes {
-    TypedClassComparable
+import herd.chayote.wrapper_type {
+    WrapperTypeComparable
 }
 
 shared class Gorkle(String name) satisfies Comparable<Gorkle> {
     shared actual Comparison compare(Gorkle other) => name.compare(other.name);
 }
 
-shared abstract class TypedGorkle(Gorkle baseValue) 
-        extends TypedClassComparable<Gorkle>(baseValue) {}
+shared abstract class TypedGorkle(Gorkle baseValue)
+        extends WrapperTypeComparable<Gorkle>(baseValue) {}
 
 test
-void testTypedClassComprable() {
+void testWrapperClassComprable() {
     class MyGorkle1(Gorkle baseValue) extends TypedGorkle(baseValue) {}
     class MyGorkle2(Gorkle baseValue) extends TypedGorkle(baseValue) {}
-    
+
     value gorkle = Gorkle("myGorkle");
     value myGorkle1 = MyGorkle1(gorkle);
     value myGorkle2 = MyGorkle2(gorkle);
-    
+
     assertEquals(myGorkle1.baseValue, gorkle);
     assertEquals(myGorkle1.name, "MyGorkle1");
     assertEquals(myGorkle1.baseValue, myGorkle2.baseValue);

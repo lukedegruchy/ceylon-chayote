@@ -1,5 +1,5 @@
-module test.herd.chayote "0.0.13" {
-    import ceylon.collection "1.2.1";
-    import ceylon.test "1.2.1";
-    import herd.chayote "0.0.13";
+module test.herd.chayote "0.0.14" {
+    import ceylon.collection "1.2.2";
+    import ceylon.test "1.2.2";
+    import herd.chayote "0.0.14";
 }

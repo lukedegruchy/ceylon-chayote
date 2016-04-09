@@ -4,19 +4,19 @@ import ceylon.test {
     assertNotEquals
 }
 
-import herd.chayote.type_classes {
-    TypedClass
+import herd.chayote.wrapper_type {
+    WrapperType
 }
 
 shared class Gorfle(String name) {}
 
-shared abstract class TypedGorfle(Gorfle baseValue) 
-        extends TypedClass<Gorfle>(baseValue) {}
+shared abstract class WrappedGorfle(Gorfle baseValue) 
+        extends WrapperType<Gorfle>(baseValue) {}
 
 test
-void testTypedClass() {
-    class MyGorfle1(Gorfle baseValue) extends TypedGorfle(baseValue) {}
-    class MyGorfle2(Gorfle baseValue) extends TypedGorfle(baseValue) {}
+void testWrapperClass() {
+    class MyGorfle1(Gorfle baseValue) extends WrappedGorfle(baseValue) {}
+    class MyGorfle2(Gorfle baseValue) extends WrappedGorfle(baseValue) {}
     
     value gorfle = Gorfle("myGorfle");
     value myGorfle1 = MyGorfle1(gorfle);
