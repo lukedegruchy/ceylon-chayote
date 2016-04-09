@@ -49,8 +49,8 @@ Functions to translate Integers into Sequences of Bytes
  
  Examples:
 
-       class AccountNumber(Integer baseValue) extends TypedInteger(baseValue) {}
-       class ReferenceNumber(Integer baseValue) extends TypedInteger(baseValue) {}
+       class AccountNumber(Integer baseValue) extends WrappedInteger(baseValue) {}
+       class ReferenceNumber(Integer baseValue) extends WrappedInteger(baseValue) {}
  
        value accountNum1 = AccountNumber(\"1\");
        value accountNum2 = AccountNumber(\"2\");
