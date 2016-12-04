@@ -68,9 +68,9 @@
 
 by("Luke deGruchy")
 license("Apache Software License")
-module herd.chayote "0.0.14" {
-    import ceylon.collection "1.2.2";
-    shared import ceylon.buffer "1.2.2";
+module herd.chayote "0.0.15" {
+    import ceylon.collection "1.3.1";
+    shared import ceylon.buffer "1.3.1";
     // TODO:  switch to ceylon.xmath when this is integrated into the Ceylon SDK
     shared import com.vasileff.ceylon.integer64 "1.0.2";
 }
